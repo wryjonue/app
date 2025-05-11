@@ -1,0 +1,15 @@
+{
+  "name": "my-module-app",
+  "version": "1.0.0",
+  "description": "An ES module-based Node.js app using Express, CORS, and Axios",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
