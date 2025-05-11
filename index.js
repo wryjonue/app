@@ -54,7 +54,7 @@ app.post('/', async (req, res) => {
 });
 
 // Use Heroku's dynamic port or fallback to 25821
-const PORT = 25821;
+const PORT = process.env.PORT || 25821;
 const srv = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
