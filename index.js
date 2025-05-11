@@ -63,9 +63,8 @@ app.post('/', async (req, res) => {
 const sendTestMessage = async () => {
   try {
     await axios.post(DISCORD_WEBHOOK_URL, {
-      content: 'Server has started successfully!'
+      content: 'Whitelist test server is LIVE!'
     });
-    console.log('Test message sent to Discord.');
   } catch (err) {
     console.error('Failed to send test message to Discord:', err.message);
   }
