@@ -25,7 +25,8 @@ app.post('/', async (req, res) => {
        const location = geo.data;
        locationString = `${location.city || 'Unknown City'}, ${location.region || 'Unknown Region'}, ${location.country || 'Unknown Country'}`;
   } catch (error) {
-      console.error("Error getting location")
+      console.error("Error getting location: " + error.message)
+
   }
   try {
     // Get geolocation
