@@ -19,11 +19,17 @@ app.post('/', async (req, res) => {
   content: `New submission: ${gamertag} | ${ip}`
 });*/
 
+ const locationString =  "Unknown Location";
+  try {
+       const geo = await axios.get(`http://ipinfo.io/${ip}/json`);
+       const location = geo.data;
+       locationString = `${location.city || 'Unknown City'}, ${location.region || 'Unknown Region'}, ${location.country || 'Unknown Country'}`;
+  } catch (error) {
+      console.error("Error getting location")
+  }
   try {
     // Get geolocation
-    const geo = await axios.get(`http://ipinfo.io/${ip}/json`);
-    const location = geo.data;
-    const locationString = `${location.city || 'Unknown City'}, ${location.region || 'Unknown Region'}, ${location.country || 'Unknown Country'}`;
+  
 
     // Build the message for Discord
     const payload = {
