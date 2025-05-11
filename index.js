@@ -4,8 +4,7 @@ import axios from 'axios';
 const app = express();
 
 // Add your Discord Webhook URL here
-const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1276451038831841320/aClNip5eR66R_mbyi5kCXLh8P0wbhU87QfTYAHOCip-wOApWnQHmBCssP4N3RzYMSCpA';
-
+const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK;
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -60,4 +59,7 @@ await axios.post(DISCORD_WEBHOOK_URL, {
 const PORT = process.env.PORT || 25821;
 const srv = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  await axios.post(DISCORD_WEBHOOK_URL, {
+  content: `Whitelister is LIVE`
+});
 });
