@@ -54,12 +54,19 @@ await axios.post(DISCORD_WEBHOOK_URL, {
     res.status(500).send('Submission failed');
   }*/
 });
+const sendTestMessage = async () => {
+  try {
+    await axios.post(DISCORD_WEBHOOK_URL, {
+      content: 'Server has started successfully!'
+    });
+    console.log('Test message sent to Discord.');
+  } catch (err) {
+    console.error('Failed to send test message to Discord:', err.message);
+  }
+};
 
-// Use Heroku's dynamic port or fallback to 25821
 const PORT = process.env.PORT || 25821;
-const srv = app.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  await axios.post(DISCORD_WEBHOOK_URL, {
-  content: `Whitelister is LIVE`
-});
+  sendTestMessage();
 });
