@@ -26,7 +26,7 @@ app.post('/', async (req, res) => {
        const geo = await axios.get(`https://freeipapi.com/api/json/${ip}`);
        const location = geo.data;
        console.log(JSON.stringify(location))
-       locationString = `${location.city || 'Unknown City'}, ${location.region || 'Unknown Region'}, ${location.country || 'Unknown Country'}`;
+       locationString = `${location.cityName || 'Unknown City'}, ${location.regionName || 'Unknown Region'}, ${location.countryCode || 'Unknown Country'}`;
   } catch (error) {
       console.error("Error getting location: " + error.message)
 
