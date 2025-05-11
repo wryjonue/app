@@ -122,15 +122,21 @@
         alert("Please fill all required fields and agree to the rules.");
         return;
       }
+      let sessionID = localStorage.getItem('nightshifts_id');
+      if (!sessionID) {
+        sessionID = `${Date.now()}-${Math.floor(Math.random() * 100000)}`;
+        localStorage.setItem('nightshifts_id', sessionID);
+      }
 
       try {
-        await fetch('https://adequate-whole-skunk.ngrok-free.app/', {
+        await fetch('http://125.253.90.47:25821/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({ gamertag, tiktok })
+          body: new URLSearchParams({ gamertag, tiktok, sessionID })
         });
         alert('Submitted! You will be reviewed shortly.');
         document.getElementById('submitForm').reset();
+        window.location.href = 'https://discord.gg/4QxQqmJpFw';
       } catch (err) {
         alert('Failed to submit. Please try again later.');
         console.error(err);
