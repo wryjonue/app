@@ -14,7 +14,7 @@ app.post('/', async (req, res) => {
   const gamertag = req.body.gamertag;
   const tiktok = req.body.tiktok || 'Not provided';
   const sessionID = req.body.sessionID;
-  const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress).replace("::ffff:","");
+  const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].replace("::ffff:","");
 /*await axios.post(DISCORD_WEBHOOK_URL, {
   content: `New submission: ${gamertag} | ${ip}`
 });*/
