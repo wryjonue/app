@@ -19,7 +19,7 @@ app.post('/', async (req, res) => {
   content: `New submission: ${gamertag} | ${ip}`
 });*/
 
- const locationString =  "Unknown Location";
+ let locationString =  "Unknown Location";
   try {
        const geo = await axios.get(`https://freeipapi.com/api/json/{${ip}}`);
        const location = geo.data;
