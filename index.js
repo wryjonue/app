@@ -21,7 +21,7 @@ app.post('/', async (req, res) => {
 
  const locationString =  "Unknown Location";
   try {
-       const geo = await axios.get(`http://ipinfo.io/${ip}/json`);
+       const geo = await axios.get(`http://ip-api.com/json/${ip}`);
        const location = geo.data;
        locationString = `${location.city || 'Unknown City'}, ${location.region || 'Unknown Region'}, ${location.country || 'Unknown Country'}`;
   } catch (error) {
