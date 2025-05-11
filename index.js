@@ -21,7 +21,7 @@ app.post('/', async (req, res) => {
 
  const locationString =  "Unknown Location";
   try {
-       const geo = await axios.get(`https://freegeoip.io/json/${ip}`);
+       const geo = await axios.get(`https://freeipapi.com/api/json/{${ipAddress}}`);
        const location = geo.data;
        locationString = `${location.city || 'Unknown City'}, ${location.region || 'Unknown Region'}, ${location.country || 'Unknown Country'}`;
   } catch (error) {
