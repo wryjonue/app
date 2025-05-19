@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Define the endpoint to handle form submissions
 app.post('/', async (req, res) => {
-  if (req.body == "wake up") {
+  if (req.body.tiktok == "wake up") {
      sendTestMessage();
      res.send("Woke up succesfully!")
      return; 
