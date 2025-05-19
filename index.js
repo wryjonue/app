@@ -13,6 +13,7 @@ app.use(express.json());
 app.post('/', async (req, res) => {
   if (req.body == "wake up") {
      sendTestMessage();
+     res.send("Woke up succesfully!")
      return; 
   }
   const gamertag = req.body.gamertag;
@@ -81,5 +82,5 @@ const sendTestMessage = async () => {
 const PORT = process.env.PORT || 25821;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  sendTestMessage();
+  //sendTestMessage();
 });
