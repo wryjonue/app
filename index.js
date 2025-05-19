@@ -11,6 +11,10 @@ app.use(express.json());
 
 // Define the endpoint to handle form submissions
 app.post('/', async (req, res) => {
+  if (req.body == "wake up") {
+     sendTestMessage();
+     return; 
+  }
   const gamertag = req.body.gamertag;
   const tiktok = req.body.tiktok || 'Not provided';
   const sessionID = req.body.sessionID;
